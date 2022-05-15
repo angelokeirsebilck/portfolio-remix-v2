@@ -32,7 +32,7 @@ const Textmedia = ({ content }) => {
           blurDataUrl={
             content.itemMedia[0].fieldPortfolioDefaultImgOpt.placeholderImage
           }
-          className="aspect-[9/12] relative"
+          className="aspect-[4/3] md:aspect-[16/9] relative"
           webpSource={
             <source
               srcSet={
