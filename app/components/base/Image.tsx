@@ -7,10 +7,12 @@ const useSSRLayoutEffect =
 function Image({
   img,
   blurDataUrl,
+  webpSource,
   ...rest
 }: {
   img: JSX.Element &
     React.ReactElement<React.ImgHTMLAttributes<HTMLImageElement>>;
+  webpSource: React.ReactElement<React.ImgHTMLAttributes<HTMLSourceElement>>;
   blurDataUrl?: string;
 } & React.HTMLAttributes<HTMLDivElement>) {
   const [visible, setVisible] = React.useState(false);
@@ -59,7 +61,11 @@ function Image({
           <div className={clsx(img.props.className, "backdrop-blur-xl")} />
         </>
       ) : null}
-      {jsImgEl}
+      <picture>
+        {webpSource ? webpSource : null}
+        {jsImgEl}
+      </picture>
+
       <noscript>{img}</noscript>
     </div>
   );

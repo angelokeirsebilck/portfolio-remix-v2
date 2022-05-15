@@ -1,7 +1,5 @@
 import React from "react";
-import BlurredImage from "../base/BlurredImage";
 import { Image } from "../base/Image";
-// import parse from "html-react-parser";
 import Container from "../base/Container";
 
 const getSizes = () => {
@@ -34,28 +32,28 @@ const Textmedia = ({ content }) => {
           blurDataUrl={
             content.itemMedia[0].fieldPortfolioDefaultImgOpt.placeholderImage
           }
-          className="aspect-h-4 aspect-w-3 md:aspect-w-3 md:aspect-h-2"
+          className="aspect-[9/12] relative"
+          webpSource={
+            <source
+              srcSet={
+                content.itemMedia[0].fieldPortfolioDefaultImgOpt.srcsetWebp
+              }
+              sizes={getSizes()}
+              type="image/webp"
+            />
+          }
           img={
-            <picture className="">
-              <source
-                srcSet={
-                  content.itemMedia[0].fieldPortfolioDefaultImgOpt.srcsetWebp
-                }
-                sizes={getSizes()}
-                type="image/webp"
-              />
-              <img
-                key={
-                  content.itemMedia[0].fieldPortfolioDefaultImgOpt
-                    .placeholderImage
-                }
-                srcSet={content.itemMedia[0].fieldPortfolioDefaultImgOpt.srcset}
-                alt={content.itemMedia[0].title}
-                sizes={getSizes()}
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
-            </picture>
+            <img
+              key={
+                content.itemMedia[0].fieldPortfolioDefaultImgOpt
+                  .placeholderImage
+              }
+              srcSet={content.itemMedia[0].fieldPortfolioDefaultImgOpt.srcset}
+              alt={content.itemMedia[0].title}
+              sizes={getSizes()}
+              loading="lazy"
+              className="w-full h-full object-cover absolute"
+            />
           }
         />
       </div>
